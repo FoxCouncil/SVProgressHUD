@@ -39,6 +39,7 @@ typedef NS_ENUM(NSUInteger, SVProgressHUDMaskType) {
 + (void)setErrorImage:(UIImage*)image;                      // default is the bundled error image provided by Freepik
 + (void)setDefaultMaskType:(SVProgressHUDMaskType)maskType; // default is SVProgressHUDMaskTypeNone
 + (void)setViewForExtension:(UIView*)view;                  // default is nil, only used if #define SV_APP_EXTENSIONS is set
++ (void)setSizeMultiplier:(NSUInteger)multiplier;           // default is 1
 
 #pragma mark - Show Methods
 

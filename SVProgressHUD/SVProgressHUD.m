@@ -33,6 +33,7 @@ static UIImage *SVProgressHUDSuccessImage;
 static UIImage *SVProgressHUDErrorImage;
 static SVProgressHUDMaskType SVProgressHUDDefaultMaskType;
 static UIView *SVProgressHUDExtensionView;
+static NSUInteger SVProgressHUDSizeMultiplier;
 
 static const CGFloat SVProgressHUDRingRadius = 18;
 static const CGFloat SVProgressHUDRingNoTextRadius = 24;
@@ -141,6 +142,10 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
     SVProgressHUDExtensionView = view;
 }
 
++ (void)setSizeMultiplier:(NSUInteger)multiplier{
+    [self sharedView];
+    SVProgressHUDSizeMultiplier = multiplier;
+}
 
 #pragma mark - Show Methods
 
@@ -289,6 +294,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 
         SVProgressHUDRingThickness = 2;
         SVProgressHUDDefaultMaskType = SVProgressHUDMaskTypeNone;
+        SVProgressHUDSizeMultiplier = 1;
     }
 	
     return self;
@@ -330,8 +336,8 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 
 - (void)updatePosition {
 	
-    CGFloat hudWidth = 100.0f;
-    CGFloat hudHeight = 100.0f;
+    CGFloat hudWidth = 100.0f * SVProgressHUDSizeMultiplier;
+    CGFloat hudHeight = 100.0f * SVProgressHUDSizeMultiplier;
     CGFloat stringHeightBuffer = 20.0f;
     CGFloat stringAndContentHeightBuffer = 80.0f;
     
@@ -346,7 +352,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
     BOOL progressUsed = (self.progress != SVProgressHUDUndefinedProgress) && (self.progress >= 0.0f);
     
     if(string) {
-        CGSize constraintSize = CGSizeMake(200.0f, 300.0f);
+        CGSize constraintSize = CGSizeMake(300.0f, 400.0f);
         CGRect stringRect;
         if ([string respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)]){
             stringRect = [string boundingRectWithSize:constraintSize
