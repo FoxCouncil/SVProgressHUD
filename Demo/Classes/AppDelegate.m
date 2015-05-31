@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "SVProgressHUD.h"
 
 @implementation AppDelegate
 
@@ -19,6 +20,13 @@
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+    
+    [SVProgressHUD setRingThickness:2];
+    [SVProgressHUD setBackgroundColor:[UIColor darkGrayColor]];
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+    [SVProgressHUD setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:24]];
+    //[SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
 

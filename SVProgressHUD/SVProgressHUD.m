@@ -346,7 +346,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
     
     if(string)
     {
-        CGSize constraintSize = CGSizeMake(300.0f, 300.0f);
+        CGSize constraintSize = CGSizeMake(250.0f, 300.0f);
         CGRect stringRect;
         
         if ([string respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)])
@@ -368,7 +368,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
             {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated"
-                stringSize = [string sizeWithFont:self.stringLabel.font constrainedToSize:CGSizeMake(200.0f, 300.0f)];
+                stringSize = [string sizeWithFont:self.stringLabel.font constrainedToSize:constraintSize];
 #pragma clang diagnostic pop
             }
             
@@ -395,9 +395,9 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
         CGFloat labelRectY = (imageUsed || progressUsed) ? hudHeight - (stringHeight + stringHeightBuffer) : 9.0f;
         
         if(hudHeight > 100.0f)
-        {
-            /* hudWidth += 24.0f; */
-            labelRect = CGRectMake(0.0f, labelRectY, hudWidth, stringHeight);
+        {            
+            labelRect = CGRectMake(12.0f, labelRectY, hudWidth - 12.0f, stringHeight);
+            hudWidth += 12.0f;
         }
         else
         {

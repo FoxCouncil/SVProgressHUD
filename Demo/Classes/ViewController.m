@@ -56,7 +56,7 @@
 }
 
 - (void)showWithStatus {
-	[SVProgressHUD showWithStatus:@"Doing Stuff"];
+	[SVProgressHUD showWithStatus:@"Setting Default Card"];
 }
 
 static float progress = 0.0f;
