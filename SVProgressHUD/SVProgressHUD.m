@@ -339,7 +339,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
     CGFloat hudWidth = 100.0f;
     CGFloat hudHeight = 100.0f;
     CGFloat stringHeightBuffer = 20.0f;
-    CGFloat stringAndContentHeightBuffer = 80.0f;
+    CGFloat stringAndContentHeightBuffer = 160.0f;
     
     CGFloat stringWidth = 0.0f;
     CGFloat stringHeight = 0.0f;
@@ -371,6 +371,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
             }
             stringRect = CGRectMake(0.0f, 0.0f, stringSize.width, stringSize.height);
         }
+        
         stringWidth = stringRect.size.width;
         stringHeight = ceil(CGRectGetHeight(stringRect));
         
@@ -379,6 +380,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
         } else {
             hudHeight = stringHeightBuffer + stringHeight;
         }
+        
         if(stringWidth > hudWidth){
             hudWidth = ceil(stringWidth/2) * 2;
         }
